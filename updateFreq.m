@@ -16,7 +16,7 @@ end
 % Add values unique to tempRight to right
 for i = 1:numel(tempRight(1,:))
     if ~any(strcmp(tempLeft(1,:),tempRight(1,i)))
-        right(:,end+1) = {tempRight{1,i}, 1};
+        right(:,end+1) = {tempRight{1,i}, -1};
     end
 end
 
@@ -28,7 +28,7 @@ for i = 1:numel(tempLeft(1,:))
         if freq > 0
             left(:,end+1) = {tempLeft{1,i}, freq};
         elseif freq < 0
-            right(:,end+1) = {tempLeft{1,i}, freq*-1};
+            right(:,end+1) = {tempLeft{1,i}, freq};
         else %TODO decide what to do on ties
             left(:,end+1) = {tempLeft{1,i}, 0};
             right(:,end+1) = {tempLeft{1,i}, 0};
