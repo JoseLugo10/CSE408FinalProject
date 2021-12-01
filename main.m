@@ -1,7 +1,7 @@
 clear all
 
-posFolder = 'data/leftwing';
-negFolder = 'data/rightwing';
+posFolder = 'data/rightwing';
+negFolder = 'data/leftwing';
 
 leftVoc = buildVoc(posFolder);
 rightVoc = buildVoc(negFolder);
@@ -23,15 +23,16 @@ wordsWithStrength = [Ltable;Rtable];
 wordsWithStrength = sortrows(wordsWithStrength,2,'descend');
 
 % perform Sentiment Analysis for 10 positive files and 10 negative files
-posTestingFolder = 'data/testing/leftwing';
-negTestingFolder = 'data/testing/rightwing';
+posTestingFolder = 'data/testing/rightwing';
+negTestingFolder = 'data/testing/leftwing';
 
-testingList(2,:) = sentiment_Analysis(wordsWithStrength,negTestingFolder);
 testingList(1,:) = sentiment_Analysis(wordsWithStrength,posTestingFolder);
+testingList(2,:) = sentiment_Analysis(wordsWithStrength,negTestingFolder);
 
 % count correct and incorrect for accuacy 
 total = numel(testingList);
 correct = 0;
+%check number of correct on both sides, zeros count as incorrect
 for j = 1 : numel(testingList(1,:))
     if(testingList{1,j} > 0)
     correct = correct + 1;
@@ -42,4 +43,4 @@ for j = 1 : numel(testingList(2,:))
     correct = correct + 1;
     end
 end
-fprintf('Num Correct = %i/%i',correct,total);
+fprintf('Num Correct = %i/%i\n',correct,total);
