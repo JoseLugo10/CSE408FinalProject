@@ -28,4 +28,18 @@ negTestingFolder = 'data/testing/rightwing';
 
 testingList(2,:) = sentiment_Analysis(wordsWithStrength,negTestingFolder);
 testingList(1,:) = sentiment_Analysis(wordsWithStrength,posTestingFolder);
-% Debug----------------------------------------
+
+% count correct and incorrect for accuacy 
+total = numel(testingList);
+correct = 0;
+for j = 1 : numel(testingList(1,:))
+    if(testingList{1,j} > 0)
+    correct = correct + 1;
+    end
+end
+for j = 1 : numel(testingList(2,:))
+    if(testingList{2,j} < 0)
+    correct = correct + 1;
+    end
+end
+fprintf('Num Correct = %i/%i',correct,total);
