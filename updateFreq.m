@@ -31,7 +31,6 @@ for i = 1:numel(tempLeft(1,:))
             right(:,end+1) = {tempLeft{1,i}, freq};
         else %TODO decide what to do on ties
             left(:,end+1) = {tempLeft{1,i}, 0};
-            right(:,end+1) = {tempLeft{1,i}, 0};
         end
     end
 end

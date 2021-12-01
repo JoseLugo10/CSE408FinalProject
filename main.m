@@ -22,6 +22,10 @@ Ltable(:,2) = leftVoc(2,:).';
 wordsWithStrength = [Ltable;Rtable];
 wordsWithStrength = sortrows(wordsWithStrength,2,'descend');
 
-% Debug----------------------------------------
-testing = sentiment_Analysis(wordsWithStrength);
+% perform Sentiment Analysis for 10 positive files and 10 negative files
+posTestingFolder = 'data/testing/leftwing';
+negTestingFolder = 'data/testing/rightwing';
+
+testingList(2,:) = sentiment_Analysis(wordsWithStrength,negTestingFolder);
+testingList(1,:) = sentiment_Analysis(wordsWithStrength,posTestingFolder);
 % Debug----------------------------------------
